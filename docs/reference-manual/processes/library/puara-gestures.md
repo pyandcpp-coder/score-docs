@@ -16,7 +16,9 @@ This section describes the processes ported from the [Puara-gestures](https://gi
 
 ## Leaky Integrator
 
-The **Leaky Integrator** process applies a smoothing algorithm to an input signal. It's particularly useful for reducing jitter from noisy sensors or creating smooth transitions in parameter values. The amount of smoothing can be controlled in real-time by adjusting the leak factor and the update frequency.
+The **Leaky Integrator** process acts as an accumulator that builds up a value based on its input signal over time. Simultaneously, it gradually 'leaks' or decays, preventing the value from growing indefinitely and allowing it to fall back to zero when the input stops.
+
+This behavior makes it ideal for measuring the 'energy' of a continuous gesture, such as a shake, or for creating smooth, organic-feeling transitions by filtering out noisy sensor data (acting as a low-pass filter). The `Leak Factor` directly controls the rate of this decay.
 
 ### Parameters
 
